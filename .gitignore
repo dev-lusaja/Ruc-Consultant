@@ -1,0 +1,3 @@
+storage/rethinkbd
+storage/zips/.DS_Store
+rethinkdb/*

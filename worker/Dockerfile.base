@@ -1,0 +1,23 @@
+FROM centos:7
+MAINTAINER Dev-Lusaja <janoone52@gmail.com>
+
+ENV PYTHONUNBUFFERED 1
+
+RUN yum -y update && yum clean all
+RUN yum -y install epel-release && yum clean all
+RUN yum -y update ca-certificates
+
+RUN yum -y install \
+      postgresql-devel \
+      python-devel \
+      python-setuptools \
+      python-pip \
+      python-lxml \
+      gcc \
+      gcc-c++ \
+    && yum clean all
+RUN pip install --upgrade pip
+RUN yum -y reinstall glibc-common  && yum clean all
+
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app

@@ -1,0 +1,6 @@
+sunat:
+  url: 'http://www2.sunat.gob.pe/padron_reducido_ruc.zip'
+paths:
+  zip : '../storage/zips'
+  ext : '.zip'
+  unzip : '../storage/unzips'

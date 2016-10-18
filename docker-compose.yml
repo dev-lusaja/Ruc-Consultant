@@ -1,0 +1,26 @@
+worker:
+   build: ./worker
+   environment:
+     RETHINKDB_HOST: rethinkdb
+     RETHINKDB_PORT: 28015
+     RETHINKDB_DATABASE_NAME: 'Ruc-Consultant'
+     ZIP_STORAGE: '/storage/zips'
+     # UNZIP_STORAGE: '/storage/unzips'
+     # SUNAT_URL: 'http://www2.sunat.gob.pe/padron_reducido_ruc.zip'
+     # ZIP_PATH : '../storage/zips'
+     # UNZIP_PATH : '../storage/unzips'
+     # EXT_FILE: '.zip'
+     TZ: America/Lima
+   links:
+     - rethinkdb
+   volumes:
+     - ./storage/zips:/storage/zips
+     - ./storage/unzips:/storage/unzips
+
+rethinkdb:
+  image: rethinkdb:2.3.5
+  ports:
+    - "28015"
+    - "8080:8080"
+  volumes:
+    - ./storage/rethinkdb:/data/db
